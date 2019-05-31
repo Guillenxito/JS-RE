@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> X01 </title>
+</head>
+
+<body>
+    <script>
+        const totalAsientos = 90;
+        const horarioLV = ['09:40', '10:40', '12:20', '13:10', '15:10', '16:40', '17:40', '18:30', '19:30', '21:40'];
+        const horarioD = ['09:40', '10:40', '12:20', '13:10', '15:10', '16:40', '17:40', '18:30', '19:30', '20:10', '21:40'];
+        const horarioS = ['08:40', '09:40', '10:40', '12:20', '13:10', '15:10', '16:40', '17:40', '18:30', '19:30', '21:40'];
+
+        function asientos(total) {
+            let media = total / 2;
+
+            let con = Math.floor(Math.random() * media/2);
+            let sin = Math.floor(Math.random() * media/2);
+            let nor = total - (con + sin);
+            let arr = [con, sin, nor];
+            return arr;
+        }
+
+        function rellenar(fechaInicio, fechaFin) {
+            let trenes = [];
+
+            if (fechaInicio.getTime() < fechaFin.getTime()) {
+                do {
+                    let diaArr = [];
+                    let dia = fechaInicio.getDay();
+                    let trenesDia = [];
+                    if (dia === 5) { trenesDia = horarioS }
+                    else if (dia === 6) { trenesDia = horarioD }
+                    else { trenesDia = horarioLV }
+
+                    for (let i = 0; i < trenesDia.length; i++) {
+                        let tren = {};
+                        let id = fechaInicio.getDay() 
+                        + Math.floor(Math.random() * (99 - 10) + 10).toString() 
+                        + trenesDia[i].replace(':','');
+                        tren.id = id;
+                        tren.salida = trenesDia[i];
+                        let asi = asientos(totalAsientos);
+                        tren.conDevolucion = asi[0];
+                        tren.SinDevolucion = asi[1];
+                        tren.normal = asi[2];
+                        diaArr.push(tren);
+                    }
+
+                    trenes.push(diaArr);
+                    fechaInicio.setDate(fechaInicio.getDate() + 1);
+                } while (fechaInicio <= fechaFin);
+
+            }
+            return trenes;
+        }
+
+
+        //Pruebas de ejecucion:
+
+        //rellenarTren(new Date('2019/10/1'),new Date('2019/10/10'));
+
+    </script>
+</body>
+
+</html>

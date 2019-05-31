@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Add Courses to Shopping Cart</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/grid.css">
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="row">
+        <div class="col-1">
+          <img src="img/video_play.png" id="logo">
+        </div>
+        <div class="col-2">
+          <ul>
+            <li class="submenu">
+            <img src="img/cart.png" id="img-cart">
+            <div id="shopping-cart">
+              <table id="contenido-cesta">
+                <thead>
+                  <tr>
+                    <th>Imagen</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+              <a href="#" id="vaciar-cesta" class="button">Limpiar cesta</a>
+            </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div id="hero">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <div class="hero-content">
+            <h2>Aprenda algo hoy</h2>
+            <p>Oferta especial, cualquier curso 12€</p>
+            <form action="#" id="search" method="post" class="form">
+                <input type="text" placeholder="¿Qué quiere aprender? " id="buscar-curso">
+                <input type="submit" id="submit-buscar-curso" class="submit-buscar-curso">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="barra">
+    <div class="container">
+      <div class="row">
+        <div class="col-4 icon">
+          <p>20.000 cursos en línea <br>
+          Aprenda nuevas habilidades</p>
+        </div>
+        <div class="col-4 icon">
+          <p>Instructores expertos<br>
+          Aprenda con estilos de enseñanza distintos</p>
+        </div>
+        <div class="col-4 icon">
+          <p>Acceso de por vida <br>
+          Aprenda a su ritmo</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="lista-cursos" class="container">
+    <h1 id="heading" class="heading">Cursos en línea</h1>
+    <div class="row">
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card">
+          <img src="img/course1.jpg">
+          <div class="info-card">
+            <h4>HTML5, CSS3, JavaScript para principiantes</h4>
+            <p>Juan Mengano</p>
+            <img src="img/stars.png">
+            <p class="precio"><span>200€ </span> 12€</p>
+            <a href="#" class="button-primary button input agregar-a-cesta" data-id="1">Añadir a la cesta</a>
+          </div>
+        </div> <!--.card-->
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card">
+          <img src="img/course2.jpg">
+          <div class="info-card">
+            <h4>Curso de cocina</h4>
+            <p>Juan Mengano</p>
+            <img src="img/stars.png">
+            <p class="precio"><span>200€ </span> 12€</p>
+            <a href="#" class="button-primary button input agregar-a-cesta" data-id="2">Añadir a la cesta</a>
+          </div>
+        </div>
+      </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card">
+            <img src="img/course3.jpg">
+            <div class="info-card">
+              <h4>Gitarra para principiantes</h4>
+              <p>Juan Mengano</p>
+              <img src="img/stars.png">
+              <p class="precio"><span>200€ </span> 12€</p>
+              <a href="#" class="button-primary button input agregar-a-cesta" data-id="3">Añadir a la cesta</a>
+            </div>
+          </div> <!--.card-->
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card">
+            <img src="img/course4.jpg">
+            <div class="info-card">
+              <h4>El huerto en casa</h4>
+              <p>Juan Mengano</p>
+              <img src="img/stars.png">
+              <p class="precio"><span>200€ </span> 12€</p>
+              <a href="#" class="button-primary button input agregar-a-cesta" data-id="4">Añadir a la cesta</a>
+          </div>
+          </div> <!--.card-->
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card">
+              <img src="img/course5.jpg">
+              <div class="info-card">
+                <h4>Decore con elementos reciclados</h4>
+                <p>Juan Mengano</p>
+                <img src="img/stars.png">
+                <p class="precio"><span>200€ </span> 12€</p>
+                <a href="#" class="button-primary button input agregar-a-cesta" data-id="5">Añadir a la cesta</a>
+              </div>
+          </div> <!--.card-->
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card">
+            <img src="img/course1.jpg">
+            <div class="info-card">
+              <h4>Diseño web para principiantes</h4>
+              <p>Juan Mengano</p>
+              <img src="img/stars.png">
+              <p class="precio"><span>200€ </span> 12€</p>
+              <a href="#" class="button-primary button input agregar-a-cesta" data-id="6">Añadir a la cesta</a>
+            </div>
+          </div> <!--.card-->
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card">
+            <img src="img/course2.jpg">
+            <div class="info-card">
+              <h4>Aprenda a cocinar comida mexicana</h4>
+              <p>Juan Mengano</p>
+              <img src="img/stars.png">
+              <p class="precio"><span>200€ </span> 12€</p>
+              <a href="#" class="button-primary button input agregar-a-cesta" data-id="7">Añadir a la cesta</a>
+            </div>
+          </div> <!--.card-->
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card">
+            <img src="img/course3.jpg">
+            <div class="info-card">
+              <h4>Construya un estudio de música</h4>
+              <p>Juan Mengano</p>
+              <img src="img/stars.png">
+              <p class="precio"><span>200€ </span> 12€</p>
+              <a href="#" class="button-primary button input agregar-a-cesta" data-id="8">Añadir a la cesta</a>
+            </div>
+          </div> <!--.card-->
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card">
+            <img src="img/course4.jpg">
+            <div class="info-card">
+              <h4>Cultive sus propias frutas y vegetales</h4>
+              <p>Juan Mengano</p>
+              <img src="img/stars.png">
+              <p class="precio"><span>200€ </span> 12€</p>
+              <a href="#" class="button-primary button input agregar-a-cesta" data-id="9">Añadir a la cesta</a>
+            </div>
+          </div> <!--.card-->
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card">
+            <img src="img/course5.jpg">
+            <div class="info-card">
+              <h4>Galletas caseras</h4>
+              <p>Juan Mengano</p>
+              <img src="img/stars.png">
+              <p class="precio"><span>200€ </span> 12€</p>
+              <a href="#" class="button-primary button input agregar-a-cesta" data-id="10">Añadir a la cesta</a>
+            </div>
+          </div> <!--.card-->
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+        <div class="card">
+          <img src="img/course1.jpg">
+          <div class="info-card">
+            <h4>JavaScript moderno</h4>
+            <p>Juan Mengano</p>
+            <img src="img/stars.png">
+            <p class="precio"><span>200€ </span> 12€</p>
+            <a href="#" class="button-primary button input agregar-a-cesta" data-id="11">Añadir a la cesta</a>
+          </div>
+        </div> <!--.card-->
+        </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="card">
+              <img src="img/course2.jpg">
+              <div class="info-card">
+                <h4>100 recetas naturales</h4>
+                <p>Juan Mengano</p>
+                <img src="img/stars.png">
+                <p class="precio"><span>200€ </span> 12€</p>
+                <a href="#" class="button-primary button input agregar-a-cesta" data-id="12">Añadir a la cesta</a>
+              </div>
+          </div> <!--.card-->
+        </div>
+      </div> <!--.row-->
+    </div>
+
+    <footer id="footer" class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-4">
+            <nav id="primary" class="menu">
+              <a class="link" href="#">Negocios</a>
+              <a class="link" href="#">Sea un Instructor</a>
+              <a class="link" href="#">Aplicaciones móviles</a>
+              <a class="link" href="#">Soporte</a>
+              <a class="link" href="#">Ayuda</a>
+            </nav>
+          </div>
+          <div class="col-4">
+            <nav id="secondary" class="menu">
+              <a class="link" href="#">Nosotros</a>
+              <a class="link" href="#">Trabaja con nosotros</a>
+              <a class="link" href="#">Blog</a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+      'use strict';
+      app.iniciar();
+  </script>
+</body>
+</html>

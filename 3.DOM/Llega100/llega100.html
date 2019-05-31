@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LLega a 100</title>
+    <link rel="stylesheet" href="css/styleDice.css"/>
+    <link rel="stylesheet" href="css/stylePage.css"/>
+</head>
+<body>
+        <h1>LLEGA A 100</h1>
+        <div id="tablero">
+            <div id ="jugadorRosa" class="jugador">
+                <p class = "nombre">Jugador Rosa</p>
+                <p class = "puntuacionActual">0</p>
+                <p class = "notificaciones">--</p>
+            </div>
+            <div id="dados">
+                <div></div>
+                <div></div>
+            </div>
+            <div id ="jugadorAzul" class="jugador">
+                    <p class = "nombre">Jugador Azul</p>
+                    <p class = "puntuacionActual">0</p>
+                    <p class = "notificaciones">--</p>
+            </div>
+            <div id="botones">
+                <p id="puntuacionTotalRosa" class = "puntuacionTotal">0</p>
+                
+                <div class="botonesJuego">
+                    <p class="jugar"> Jugar</p>
+                    <p class="volver"> Volver a Jugar</p>
+                    <p class="mantener"> Mantener</p>
+                </div>
+                
+                <p id="puntuacionTotalAzul" class = "puntuacionTotal">0</p>
+            </div>
+        </div>
+
+        <div>
+            <h3>REGLAS</h3>
+            <p>1. Gana quien llegue a superar los 100 (Con la puntuacion Actual + puntucion Acumulada).</p>
+            <p>2. Sacar un doble (1 ,3 o 6) es ilegal, lo que supondra el cambio de turno y el reset de la puntuacion actual del jugador.</p>
+            <h3>LEYENDA</h3>
+            <p>* El primer numero indica la puntuacion actual y es la suma de los dados + lo que llevas</p>
+            <p>* Las notificaciones se muestran debajo del primer valor y dan algo de informacion.</p>
+            <p>* El segundo numero indica la puntuacion Total y es la suma de las cantidades mantenidas.(No se puede perder)</p>
+            <h3>BOTONES</h3>
+            <p>'JUGAR' -> Tira los dados.</p>
+            <p>'MANTENER' -> Guarda/Mantiene la puntiacion actual del jugador.</p>
+            <p>'VOLVER A JUGAR' -> Reinicia la partida.</p>
+        </div>
+
+    <script src="js/app.js"></script>
+    <script>
+        'use strict';
+        app.iniciar();
+    </script>
+</body>
+
+</html>

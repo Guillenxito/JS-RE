@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>SINTAXIS PETICION AJAX</title>
+</head>
+<body>
+	<script>	
+		function pedirDatos(metodo,URL,peticion,callback){
+			const xhr = new XMLHttpRequest();
+			xhr.addEventListener('readystatechange', function(evt){
+				gestorXHR(evt,callback);
+			});
+			xhr.open(metodo,URL + peticion +'?'+ new Date().getTime()); 
+			xhr.send(null);
+		}
+
+		function gestorXHR(evt,callback) {
+			const xhr =  evt.target;
+			if(xhr.readyState === 4) {
+				if(xhr.status === 200){
+					callback(xhr.responseText);
+				}else{
+					console.error(`ERROR ${xhr.status} -> ${xhr.statusText}.`);
+					console.log('ERROR');
+				}
+			}
+		}
+
+		function representarDatos(datos){
+			console.log(datos);
+		}
+
+		pedirDatos('GET','http://192.168.14.101:3000/cursos','cursos',representarDatos);
+
+		/*
+		    function pedirDatos(metodo,URL,peticion,callback){
+        const xhr = new XMLHttpRequest();
+        xhr.addEventListener('readystatechange', function(){
+            if(xhr.readyState === 4) {
+                if(xhr.status === 200){
+                    callback(xhr.responseText);
+                }else{
+                    console.error(`ERROR ${xhr.status} -> ${xhr.statusText}.`);
+                    console.log('ERROR');
+                }
+            }
+        });
+        xhr.open(metodo,URL + peticion); 
+        xhr.send(null);
+    }
+		*/
+
+	</script>
+</body>
+</html>

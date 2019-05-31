@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Split -> Pasa de una cadena a un array
+        //Join -> Pasa de un array a una cadena.
+        //Slice
+        
+        //Splice
+        
+        let numeros = "Uno, Dos, Tres, Cuatro, Cinco, Seis, Siete, Ocho, Nueve, Diez, Once, Doce, Trece, Catorce, Quince, Dieciseis, Diecisite, Dieciocho, Diecinueve, Veinte";
+
+        let  gestionarCadena = cadena => cadena.split(", ").sort();
+        
+        let arrayACdenas = array => array.sort().reverse().join('\n');
+
+
+        let res = gestionarCadena(numeros);
+        console.log(res);
+        resCadena = arrayACdenas(res);
+        console.log(resCadena);
+
+
+    //EJERCICIO -> Hacer un buscador de palabras con un while y la condicion en el while
+        function buscarPalabraCadena(cadena,buscada){
+            let cnt = -1;
+            let pos = -1;
+        
+            while( pos = cadena.indexOf(buscada, pos + 1) , cnt++ , pos !== -1){
+
+            }
+
+        return cnt;
+        }//buscarPalabraCadena
+
+
+        function buscarPalabraArr(array,buscada){
+            let cnt = 0;
+            let pos = -1;
+            let i = 0;
+        
+            while( pos = array[i++].indexOf(buscada) , cnt = (pos === 0) ? cnt+1 : cnt, i < array.length){
+
+            }
+            return cnt;
+        }//buscarPalabraArr
+
+        /* 
+            == Ordenar apatir del X caharacter de la cadena ==  
+         *Para ordenar por letras se necesita siempre 'charCodeAt()'
+         
+        */
+        let a = numeros.split(", ");
+        a.sort((a,b)=> a.charCodeAt(2) - b.charCodeAt(2));
+    </script>
+</body>
+</html>

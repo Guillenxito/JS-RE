@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Calendario Mensual</title>
+<script src="calendario.js"></script>
+<style>
+
+body > div  {
+   width:  480px;
+   margin:  128px auto;
+}
+
+#botones {
+   width: 480px;
+   position: relative;
+   top: 36px;
+   text-align: right;
+}
+
+button {
+   width:  32px;
+   height: 28px;
+   font-size: 18px;
+   font-weight: 900;
+   color: black;
+   border: 0px;
+   margin: 0 -2px;
+   background-color: tan;
+   cursor: pointer;
+   position: relative;
+}
+
+button:hover {
+   color: snow;
+}
+
+
+table {
+   width:  100%;
+   table-layout: fixed;
+   font-family: monospace;
+   font-size: 150%;
+   border-collapse: collapse;
+   color: steelblue;
+   font-weight: lighter;
+}
+
+caption {
+   text-align: left;
+   font-size: 150%;
+   font-family: sans-serif;
+   color: orangered;
+}
+
+td, th  {
+   text-align: center;
+   padding: 12px;
+   border-right: 1px solid skyblue;
+}
+
+th:nth-of-type(n+8), td:nth-of-type(n+8)  {color: darkblue; font-weight: bold;}
+th:first-of-type, td:first-of-type {border: 0;}
+
+td:first-of-type {font-size: 0.7em;}
+
+td:not(.numero_semana):hover {
+   color: orangered;
+   background-color: lightgray;
+}
+
+td.numero_semana {
+   color: gray;
+}
+
+/* Fechas especiales */
+td#dia_actual {
+   background-color: lightblue;
+}
+
+td.no_del_mes {
+  opacity: 0.3;
+}
+
+</style>
+
+</head>
+
+<body>
+<script src="app.js"></script>
+  <script>
+    "use strict";
+    
+    app.iniciar();
+
+    //  Devuelve el número de la semana de una fecha según ISO
+    function numeroDeSemana(fecha) {
+      var date = new Date(fecha);
+      date.setHours(0, 0, 0, 0);
+      // Thursday in current week decides the year.
+      date.setDate(date.getDate() + 3 - (date.getDay() + 6) % 7);
+      // January 4 is always in week 1.
+      var week1 = new Date(date.getFullYear(), 0, 4);
+      // Adjust to Thursday in week 1 and count number of weeks from date to week1.
+      return 1 + Math.round(((date.getTime() - week1.getTime()) / 86400000
+                          - 3 + (week1.getDay() + 6) % 7) / 7);
+    };
+
+  </script>
+</body>
+</html> 

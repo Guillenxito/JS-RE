@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Florencia</title>
+</head>
+<body>
+    <script>
+    let numVarillas = 0;
+    let restoVarillas = 0;
+    let lenvarillas = 0;
+    let lenSegmento = 0;
+    let desaprovechado = 0;
+    const paraguas = [200,8,1,60,8,3,20];
+
+    for(let i = 1; i < paraguas.length ; i +=3){
+        lenSegmento = paraguas[i + 2];
+        if(lenSegmento > lenvarillas){
+            break;
+        }
+        if(restoVarillas < lenSegmento){
+            desaprovechado = restoVarillas;
+            numVarillas++;
+            restoVarillas = lenvarillas;
+        }
+        for(let j = 0; j < paraguas[i] * paraguas[i+1] ; j++){
+            restoVarillas -= lenSegmento;
+            if(restoVarillas < lenSegmento){
+                numVarillas++;
+                restoVarillas = lenvarillas;
+            }
+        }
+    }
+    if(restoVarillas === lenvarillas) {
+        numVarillas--;
+        restoVarillas = 0;
+    }
+    desaprovechado += restoVarillas;
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+{"cursos":[
+  {
+    "img": "course1.jpg",
+    "titulo": "HTML5, CSS3, JavaScript para principiantes",
+    "autor": "Juan Mengano",
+    "precio": "200€",
+    "oferta": "12€"
+  },
+  {
+    "img": "course2.jpg",
+    "titulo": "Curso de cocina",
+    "autor": "Juan Mengano",
+    "precio": "200€",
+    "oferta": "12€"
+  },
+  {
+    "img": "course3.jpg",
+    "titulo": "Gitarra para principiantes",
+    "autor": "Juan Mengano",
+    "precio": "200€",
+    "oferta": "12€"
+  },
+  {
+    "img": "course4.jpg",
+    "titulo": "El huerto en casa",
+    "autor": "Juan Mengano",
+    "precio": "200€",
+    "oferta": "12€"
+  },
+  {
+    "img": "course5.jpg",
+    "titulo": "Decore con elementos reciclados",
+    "autor": "Juan Mengano",
+    "precio": "200€",
+    "oferta": "12€"
+  },
+  {
+    "img": "course1.jpg",
+    "titulo": "Diseño web para principiantes",
+    "autor": "Juan Mengano",
+    "precio": "200€",
+    "oferta": "12€"
+  },
+  {
+    "img": "course2.jpg",
+    "titulo": "Aprenda a cocinar comida mexicana",
+    "autor": "Juan Mengano",
+    "precio": "200€",
+    "oferta": "12€"
+  },
+  {
+    "img": "course3.jpg",
+    "titulo": "Construya un estudio de música",
+    "autor": "Juan Mengano",
+    "precio": "200€",
+    "oferta": "12€"
+  },
+  {
+    "img": "course4.jpg",
+    "titulo": "Cultive sus propias frutas y vegetales",
+    "autor": "Juan Mengano",
+    "precio": "200€",
+    "oferta": "12€"
+  },
+  {
+    "img": "course5.jpg",
+    "titulo": "Galletas caseras",
+    "autor": "Juan Mengano",
+    "precio": "200€",
+    "oferta": "12€"
+  },
+  {
+    "img": "course1.jpg",
+    "titulo": "JavaScript moderno",
+    "autor": "Juan Mengano",
+    "precio": "200€",
+    "oferta": "12€"
+  },
+  {
+    "img": "course2.jpg",
+    "titulo": "100 recetas naturales",
+    "autor": "Juan Mengano",
+    "precio": "200€",
+    "oferta": "12€"
+  }
+]
+}

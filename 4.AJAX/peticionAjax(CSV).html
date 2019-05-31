@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>SINTAXIS PETICION AJAX</title>
+</head>
+<body>
+	<script>	
+		function pedirDatos(metodo,URL,peticion,callback){
+			const xhr = new XMLHttpRequest();
+			xhr.addEventListener('readystatechange', function(evt){
+				gestorXHR(evt,callback);
+			});
+			xhr.open(metodo,URL + peticion +'?'+ new Date().getTime()); 
+			xhr.send(null);
+		}
+
+		function gestorXHR(evt,callback) {
+			const xhr =  evt.target;
+			if(xhr.readyState === 4) {
+				if(xhr.status === 200){
+					callback(xhr.responseText);
+				}else{
+					console.error(`ERROR ${xhr.status} -> ${xhr.statusText}.`);
+					console.log('ERROR');
+				}
+			}
+		}
+
+		function representarDatos(datos){
+			console.log(datos);
+			const obj = CSVParse(datos);
+			console.log(obj);
+		}
+
+		function CSVParse(datos, sepReg = '\n', sepCampo = ';') {
+			const registros = datos
+							  .split(sepReg)
+							  .map(r => r.split(sepCampo))
+							  .map(r => r.map(c => c.trim()))
+							  .filter((r,p,a) => r.length === a[0].length)//Controlar el numero de campos (max4)
+							  .filter(r => r.every(c => c.length))//si falta algun campo no se devuelve la fila
+							  
+			const claves = registros.shift();
+
+			const objetos = registros
+							.map(r =>{ return r.reduce((acc, reg, pos) => {
+									acc[claves[pos]] = reg;
+									return acc;
+								},{});
+							});
+			//console.log(objetos);
+			return objetos;
+		}
+
+		pedirDatos('GET','http://192.168.14.101:3000/','datos.csv',representarDatos);
+
+	</script>
+</body>
+</html>

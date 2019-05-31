@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>RelojEspejo</title>
+</head>
+
+<body>
+    <script>
+        //Comentario de prueba
+        let horas = [];
+
+        const INICIO = "01:00";
+        const FINAL = "12:59";
+
+        let entrada1 = ["11:55","08:05", "12:00", "10:09"];
+        let entrada5 = [,"01:00","05:00","06:00","07:00","09:00","11:00"];
+        
+
+        function rellenarHoras() {
+            let numeroActual = INICIO.split(":");
+            let numeroFinal = FINAL.split(":");
+
+            numeroActual = parseInt(numeroActual.join(''));
+            numeroFinal = parseInt(numeroFinal.join(''));
+
+            let hora;
+
+            while (numeroFinal - 1 > numeroActual - 1) {
+                numeroActual += 1;
+
+                if (numeroActual < 960) {
+                    minutos = String(numeroActual).substring(1);
+                    if (minutos > 59) {
+                        numeroActual = numeroActual + 100;
+                        numeroActual = numeroActual - 60;
+                    }
+                    horaArr = String(numeroActual).split("");
+                    horaArr.unshift("0");
+                    horaArr.splice(2, 0, ":");
+                    hora = horaArr.join("");
+                    horas.push(hora);
+                } else {
+                    minutos = String(numeroActual).substring(2);
+                    if (minutos > 60) {
+                        numeroActual = numeroActual + 100;
+                        numeroActual = numeroActual - 60;
+                    }
+                    horaArr = String(numeroActual).split("");
+                    horaArr.splice(2, 0, ":");
+                    hora = horaArr.join("");
+                    horas.push(hora);
+                }
+            }
+        }
+
+        function vueltaHora(arrHoras) {
+            arrHoras.forEach(horA => {
+                let hora = horA.split(":");
+                let horaTratada = 0;
+                if (hora[1] == "00") {
+                    if(hora[0] != "12"){
+                        let horaF = parseInt(hora[0]) - 12;
+                        horaTratada = Math.abs(horaF);
+                    }else{
+                         horaTratada = hora[0];
+                    } 
+                console.log(String(horaTratada)+":00");
+                } else {
+                    let minutoF = 60 - parseInt(hora[1]);
+                    if(minutoF<10){
+                        minutoF = "0"+String(minutoF);
+                    }else{
+                        minutoF = String(minutoF);
+                    }
+                    let horaF = parseInt(hora[0]) - 12;
+                    let horaTratada = Math.abs(horaF);
+                    if(horaTratada != 1){
+                        horaTratada -= 1;
+                    }else{
+                        horaTratada = 12;
+                    }
+
+                    if(horaTratada<10){
+                        hora = "0"+String(horaTratada) + ":" + minutoF;
+                    }else{
+                        hora = String(horaTratada) + ":" + minutoF;
+                    }
+                    console.log(hora);
+                    //console.log(horas);
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

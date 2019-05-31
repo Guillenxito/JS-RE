@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ejercicio 1</title>
+</head>
+<body>
+    <script>
+    // EJERCICIO 1
+        let productos = [
+    "Sakura", "Un mar violeta oscuro", "Los cr�menes de Alicia", "Verdades y mentiras", "Margaritas olvidadas", "Cien a�os de soledad", "Invictus", "�Sabes qu� es?", 
+    "�No quiero ir!", "1899 Metahulla n� 01", "Me llamo Rojo", "De la mano", "El poder del perro", "Una mujer en tu camino", "El carrusel de las confusiones", 
+    "Cuentos completos", "La madre", "Inferno", "El molinero aullador", "La chica del tren", "No digas que fue un sue�o", "Nada", "1Q84"];   
+        
+    let letras = [];
+        productos.map((x) =>{ 
+            lI = x.substr(0,1);
+            if(!letras.includes(x.substr(0,1))){
+                console.log('=== '+lI+' ===')
+                productos.map((j) => {
+                    lI2 = j.substr(0,1);
+                    if(lI2 === lI){
+                        console.log(j);
+                    }
+                });
+            }
+            letras.push(lI);
+        });
+
+        /*console.log("ABCDEGMO".split('')
+        .map(letra => {
+            a = "==="+letra+'===\n';
+            a += productos.filter(p => p.startsWith(letra)).join('\n');
+        }).join('\n'));*/
+
+
+    //EJERCICIO 2
+    //Ordenar por la suma de sus digitos
+    let numeros = [99,5,8,12,111,123];
+
+    sumarDigitos =  numero => String(numero).split("").map(Number).reduce(sumar,0);
+
+    sumar = (x,y) => x + y;
+
+    orden = (a,b) => sumarDigitos(a) - sumarDigitos(b);
+
+    console.log(numeros.sort(orden));
+
+
+
+    //EJERCICIO 3
+    //Intervalo(devuelve un array con los numeros [ini,fin])
+    //Intervalo(inicioOFinal,final,pasos);
+
+
+
+
+
+    </script>
+</body>
+</html>

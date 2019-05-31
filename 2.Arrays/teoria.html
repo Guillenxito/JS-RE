@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Funciones de Array</title>
+</head>
+<body>
+    <script>
+        num = [1,2,3,4,5,6,7,8,9,10];
+        nume = [23,0,34,54,55,1];
+        frase  = "Una frase un poco tonta";
+        nombres = ["Alvaro","Oliver","Pablo","Sergio","Rebeca","Fernando"];
+        
+        /* FILTER */
+        let impares = num.filter((v) => v % 2 !== 0);   
+        let pares = num.filter((v) => v % 2 === 0);   
+
+        let posionesImpares = nume.filter((v,p) => p % 2 != 0);
+        let posionesPares = nume.filter((v,p) => p % 2 == 0);
+
+        let paresPosionesPares = nume.filter((v,p) => p % 2 == 0 && v % 2 === 0);
+
+        /* MAP 
+            *Devuelve una copia modificada.
+            *Valores acceptados dentro del parentesis:
+                1-Valor
+                2-Posicion
+                3-Array
+        */
+        let por2Num = num.map((v) => {return v*2});
+        let numACadena = num.map((v,p,a)=> v.toString());
+
+        /* REDUCE 
+            *Modifica el array original
+            *Valores acceptados dentro del parentesis:
+                1-Acumulado    
+                2-Valor
+                3-Posicion
+                4-Array
+            *Coge por defecto el primer valor inicial del array para modificar esa funcion se pone ,0
+        */
+        num.reduce((ac,v,p,a)=> ac + v, 0);
+        num.reduce(function(ac,v) { return ac + v}, 0);
+
+        /*Buscar la palabra mas larga*/
+        resultado = frase.split(' ')
+        .map(x => x.length)
+        .reduce((acc,p) => Math.max(acc,p));
+
+        /*Media de la frase*/
+        resultadoMedia = frase.split(' ')
+        .map(x => x.length)
+        .reduce((acc,p) => acc + p) / frase.split(' ').length;
+
+        
+
+
+
+    </script>
+</body>
+</html>

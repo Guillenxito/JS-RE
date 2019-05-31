@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang=es>
+<head>
+  <meta charset="UTF-8">
+  <title>Destroza monstruos</title>
+<style> 
+  /* Layout */
+  main {
+    display:flex;
+    flex-direction: column; 
+    text-align: center;
+  }
+
+  main > section {
+    display: flex;
+  }
+
+  main > section:nth-of-type(odd) > div { flex-basis:  50%; }
+  main > section:nth-of-type(even) > div{ flex-basis:  100%; }
+
+
+  #cont-barras > div  div {
+    width: 80%;
+    height: 40px;
+    background-color: #eee;
+    margin: auto;
+    transition: width 500ms;
+    line-height: 40px;
+  }
+
+  #cont-barras > div > div > div {
+    background-color: green; 
+    margin: 0; 
+    color: white;
+  }
+
+  main > section:not(#cont-barras) {
+    margin-top: 30px;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 3px 6px #ccc;
+  }
+
+#log ul {
+  list-style: none;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+#log ul li {
+  margin: 5px;
+}
+
+#log ul .jugador {
+  color: blue;
+  background-color: #e4e8ff;
+}
+
+#log ul .monstruo {
+  color: red;
+  background-color: #ffc0c1;
+}
+
+#log > div > p {
+  font-weight: 600;
+  text-decoration: underline; 
+}
+
+button {
+  font-size: 20px;
+  background-color: #eee;
+  padding: 12px;
+  box-shadow: 0 1px 1px black;
+  margin: 10px;
+}
+
+#empezar { background-color: #aaffb0; }
+#empezar:hover { background-color: #76ff7e;}
+#ataque { background-color: #ff7367; }
+#ataque:hover { background-color: #ff3f43;}
+#ataque-esp { background-color: #ffaf4f; }
+#ataque-esp:hover { background-color: #ff9a2b; }
+#sanar { background-color: #aaffb0; }
+#sanar:hover { background-color: #76ff7e; }
+#rendirse { background-color: #ffffff; }
+#rendirse:hover { background-color: #c7c7c7; }    
+</style>
+
+</head>
+<body>
+<main id="app">
+  <!-- Marcadores -->
+  <section id="cont-barras">
+    <div>
+      <h1>TU: <span>0</span></h1>
+      <div class="barrasalud">
+        <div class="barrasalud" style=""></div>
+      </div>
+    </div>
+
+    <div>
+      <h1>MONSTRUO: <span>0</span></h1>
+      <div class="barrasalud">
+        <div class="barrasalud"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Botón comenzar -->
+  <section id="cont-inicio">
+    <div>
+      <button id="empezar">NUEVO JUEGO</button>
+    </div>
+  </section>
+  
+  <!-- Botones -->
+  <section  id="cont-botones" style="display:none;">
+    <div>
+      <button id="ataque">ATACAR</button>
+      <button id="ataque-esp">ATAQUE ESPECIAL</button>
+      <button id="sanar">CURARSE</button>
+      <button id="rendirse">RENDIRSE</button>
+    </div>
+  </section>
+  
+  <!-- Log -->
+  <section id="log" style="display:none;">
+    <div>
+      <p>Cuaderno de bitácora</p>
+      <ul>
+      </ul>
+    </div>
+  </section>
+</main>
+<script src="app.js"></script>
+<script>
+  'use strict';
+  app.iniciar();
+
+
+</script>
+</body>
+</html>
