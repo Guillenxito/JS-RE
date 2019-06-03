@@ -26,8 +26,8 @@ let tiempoApp = {};
 
     setInterval(ultimaActualizacion, .5 * 1000 * 60); //Medio minuto
     setInterval(refrescarDatos, 5 * 1000 * 60); //5min
-
-    pedirDatos('ciudades.csv', convertirCSVaObjetos);
+    pedirDatos('ciudades_csv', convertirCSVaObjetos);
+    //pedirDatos('ciudades.csv', convertirCSVaObjetos);
     //convertirCSVaObjetos(ciudades_csv);
 
   }//iniciar
@@ -59,8 +59,9 @@ let tiempoApp = {};
     console.log(ciudad);
     if (ciudad.length) {
       almacenarCiudad(ciudad[0]);
-      pedirDatos('datos?id=' + ciudad[0].id, mostrarTemperaturas);
-      //mostrarTemperaturas(datos_json);
+      //pedirDatos('datos?id=' + ciudad[0].id, mostrarTemperaturas);
+      pedirDatos('datos_json?id=' + ciudad[0].id, mostrarTemperaturas);
+      mostrarTemperaturas(datos_json);
     }
   }
 
@@ -89,6 +90,9 @@ let tiempoApp = {};
 
   // Punto 2 - Convertir CSV a array de Objetos
   function convertirCSVaObjetos(datos) {
+    //Pasos para usar Mi servidor
+      datos = JSON.parse(datos);
+      datos = datos[0];
     //Pasos para filtrar el los datos
     /*
       1. Separar por el salto de linea
@@ -98,7 +102,8 @@ let tiempoApp = {};
       5. Filtrar por si falta algun campo
       6. Coger las claves
       7. Filtrar por los patrones
-    */
+    */  
+   
     let datosFiltrados = datos.split(NUEVA_LINEA)
       .map(r => r.split(SEPARADOR))
       .map(r => r.map(c => c.trim()))
@@ -141,6 +146,7 @@ let tiempoApp = {};
   */
   function mostrarTemperaturas(datos) {
     datos = JSON.parse(datos);
+   // console.log(datos);
     let hoy = new Date().toLocaleDateString()
       .split('/')
       .reverse();
@@ -153,7 +159,8 @@ let tiempoApp = {};
 
     const primerDiv = crearPrimerDiv();
     document.getElementById('info').appendChild(primerDiv);
-
+    const segundoDiv = crearSegundoDiv(tempDia[0],hoy);
+    document.getElementById('info').appendChild(segundoDiv);
     if (tempDia.lenght) {
       // Mostrar info
     } else {
@@ -192,6 +199,51 @@ let tiempoApp = {};
      div.appendChild(p);
 
     return div;
+  }
+
+  function crearSegundoDiv(datos,fecha) {
+    console.log(datos.temp_max);
+    let txt = document.createTextNode(fecha);
+    const div = document.createElement('div');
+          div.dataset.date = fecha;
+
+    const h3 = document.createElement('h3');
+          txt = document.createTextNode('Hoy');
+          h3.appendChild(txt);
+          div.appendChild(h3);
+          
+    const img = document.createElement('img');
+    let ruta = imgTiempo(datos.cielo);
+          img.setAttribute('src',ruta);
+          img.setAttribute('alt','estado');
+          div.appendChild(img);
+          
+    const span = document.createElement('span');
+          txt = document.createTextNode(datos.cielo);
+          span.appendChild(txt);
+          div.appendChild(span);
+
+    const p1 = document.createElement('p');
+    let txtI = document.createTextNode('Min: ');
+          p1.appendChild(txtI);
+          txtI = document.createTextNode(datos.temp_min);
+          p1.appendChild(txtI);
+          div.appendChild(span);
+
+    const p2 = document.createElement('p');
+         txtI = document.createTextNode('Max: ');
+          p2.appendChild(txtI);
+          txtI = document.createTextNode(datos.temp_max);
+          p2.appendChild(txtI);
+          div.appendChild(span);
+    return div;
+  }
+
+  function imgTiempo(cielo){
+    console.log(cielo);
+    let dir = 'img/' + cielo.substring(0,3).toLowerCase() + '.svg';
+    console.log(dir);
+    return dir;
   }
 
 
