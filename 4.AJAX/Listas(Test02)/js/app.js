@@ -19,6 +19,8 @@
 const listaApp = {};
 
 (function () {
+// Parche sin servidor
+
 // tipos válidos de artículos
 const tipos = ["VERDURAS", "LACTEOS", "CARNICOS", "DULCES", "BEBIDAS", "LIMPIEZA"];
 const CHAR_DEL = " &otimes;";  // Icono de borrado
@@ -26,7 +28,8 @@ const CHAR_EDIT =  "&#9998; "; // Icono de edición
 
 const urlServidor = 'http://192.168.14.101:3000';
 
-function iniciar(){
+function iniciar( url){
+  urlServidor = url || 'http://192.168.14.101:3000';
   console.log('APP INICIAR');
   document.querySelector("body > main > section > div:nth-child(1)").addEventListener('click',gestionarEventosBuscar);
   document.querySelector("body > main > section > div:nth-child(1)").addEventListener('keyup',gestionarEventosBuscar);
@@ -52,7 +55,9 @@ function comprobarLS(peticion){
   if(localStorage[peticion]){
     console.log('PINTAR LISTA DEL LS');
   }else{
-    pedirDatos(peticion,tratarCSV)
+    pedirDatos(peticion,tratarCSV);
+    let l = Lista001.lst;
+    console.log(l)
   }
 }
 
@@ -97,8 +102,7 @@ function tratarCSV(datos){
 }
 
 function validar(reg){
-  console.log(reg);
-  return reg[0].length > 1 && 
+  
 }
 
 listaApp.iniciar = iniciar;
