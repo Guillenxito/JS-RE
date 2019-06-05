@@ -26,7 +26,7 @@ const tipos = ["VERDURAS", "LACTEOS", "CARNICOS", "DULCES", "BEBIDAS", "LIMPIEZA
 const CHAR_DEL = " &otimes;";  // Icono de borrado
 const CHAR_EDIT =  "&#9998; "; // Icono de edición
 
-const urlServidor = 'http://192.168.14.101:3000';
+let urlServidor = 'http://192.168.14.101:3000';
 
 function iniciar( url){
   urlServidor = url || 'http://192.168.14.101:3000';
@@ -55,10 +55,15 @@ function comprobarLS(peticion){
   if(localStorage[peticion]){
     console.log('PINTAR LISTA DEL LS');
   }else{
-    pedirDatos(peticion,tratarCSV);
-    let l = Lista001.lst;
-    console.log(l)
+    //pedirDatos(peticion,tratarCSV);
+    pedirDatos(peticion,tratarCSVJSON);
   }
+}
+
+function tratarCSVJSON(datos){
+datos = JSON.parse(datos);
+datos = datos[0];
+tratarCSV(datos);
 }
 
 function gestionarEventosAgregar(evt){
@@ -94,16 +99,36 @@ function tratarCSV(datos){
                           .map(r => r.map(c => c.trim()))
                           .filter((reg,pos,arr) => reg.length === arr[0].length);
   let claves = datosLimpios.shift();
-                          //.filter((reg,pos,arr) => arr[1] === reg[0] > 1)
-     datosLimpios = datosLimpios.filter(r => validar(r));
-                          //.filter(r => r.every(c => c.length));
-  
-  console.log(datosLimpios)
+    //No pueden haber el primer dato repetido y tiene que ser mayor a 1
+     datosLimpios = datosLimpios.reduce((acc,val) => { 
+       if(! acc.map( r => r[0]).includes(val[0])){
+         acc.push(val);
+       } 
+       return acc;
+      },[]).filter((reg,pos,arr) =>  reg[0].length > 1);
+
+      //El segundo valor tiene que contener un valor del array(tipos)
+      datosLimpios = datosLimpios.filter(reg => tipos.includes(reg[1].toUpperCase()));
+
+      //El tercer valor tiene que ser un si o no
+      datosLimpios = datosLimpios.filter(reg => (reg[2]==='si' || reg[2]==='no')); 
+      console.log(datosLimpios);
+      console.log(claves)
+      let objetos = datosLimpios = datosLimpios.map((r,p) => {
+         const obj = r.reduce((acc, reg, pos) => {
+                                acc[claves[pos]] = reg;
+                                return acc;
+                              }, {});
+        obj['id'] = p.toString().padStart(3,"0");
+        return obj;
+      });
+  console.log(objetos);
 }
 
-function validar(reg){
-  
+function ordenarCosas(a,b){
+
 }
+
 
 listaApp.iniciar = iniciar;
 })();
