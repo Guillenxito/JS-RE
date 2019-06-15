@@ -123,9 +123,61 @@ function tratarCSV(datos){
         return obj;
       });
   console.log(objetos);
+  mostrarLista(objetos);
 }
 
 function ordenarCosas(a,b){
+
+}
+
+function mostrarLista(obj){
+  let nombre;
+  let tipo;
+  let cesta;
+  if(obj[0]['art'] !== undefined){
+    nombre = 'art';
+    tipo = 'tipo';
+    cesta = 'encesta';
+  }else{
+    nombre = 'item';
+    tipo = 'type';
+    cesta = 'incard';
+  }
+  let ul = document.querySelector("body > main > section > ul");
+  obj.forEach(element => {
+    console.log(element);
+    let li = document.createElement('li');
+    li.setAttribute('id',element['id']);
+
+    let txt = document.createTextNode(CHAR_EDIT);
+    let editar = document.createElement('big');
+        //editar.appendChild(txt);
+        editar.innerHTML = CHAR_EDIT;
+    let spanEditar = document.createElement('span');
+        spanEditar.appendChild(editar);
+
+        txt = document.createTextNode(CHAR_DEL);
+    let borrar = document.createElement('big');
+        //borrar.appendChild(txt);
+        borrar.innerHTML =  CHAR_DEL;
+    let spanBorrar = document.createElement('span');
+        spanBorrar.appendChild(borrar);
+
+        txt = document.createTextNode(element[nombre]);
+    let spanNombre = document.createElement('span');
+        spanNombre.dataset.tipo = element[tipo];
+        spanNombre.appendChild(txt);
+
+        console.log(spanNombre);
+
+        li.appendChild(spanEditar);
+        li.appendChild(spanNombre);
+        li.appendChild(spanBorrar);
+
+        ul.appendChild(li);
+  });
+
+      
 
 }
 
